@@ -1,13 +1,11 @@
 package pro.sky.calculator;
 
 interface CalculatorService {
-    String greetings();
+    int plus(int firstNum, int secondNum);
 
-    String plus(String firstNum, String secondNum);
+    int minus(int firstNum, int secondNum);
 
-    String minus(String firstNum, String secondNum);
+    int multiply(int firstNum, int secondNum);
 
-    String multiply(String firstNum, String secondNum);
-
-    String divide(String firstNum, String secondNum);
+    float divide(int firstNum, int secondNum);
 }

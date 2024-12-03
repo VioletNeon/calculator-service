@@ -16,26 +16,38 @@ public class CalculatorController {
 
     @GetMapping
     public String greetings() {
-        return calculatorService.greetings();
+        return "Добро пожаловать в калькулятор!";
     }
 
     @GetMapping("/plus")
-    public String plus(@RequestParam(value = "num1", required = false) String firstNum, @RequestParam(value = "num2", required = false) String secondNum) {
-        return calculatorService.plus(firstNum, secondNum);
+    public String plus(@RequestParam("num1") int firstNum, @RequestParam("num2") int secondNum) {
+        int result = calculatorService.plus(firstNum, secondNum);
+
+        return firstNum + " + " + secondNum + " = " + result;
     }
 
     @GetMapping(path = "/minus")
-    public String minus(@RequestParam(value = "num1", required = false) String firstNum, @RequestParam(value = "num2", required = false) String secondNum) {
-        return calculatorService.minus(firstNum, secondNum);
+    public String minus(@RequestParam("num1") int firstNum, @RequestParam("num2") int secondNum) {
+        int result = calculatorService.minus(firstNum, secondNum);
+
+        return firstNum + " - " + secondNum + " = " + result;
     }
 
     @GetMapping(path = "/multiply")
-    public String multiply(@RequestParam(value = "num1", required = false) String firstNum, @RequestParam(value = "num2", required = false) String secondNum) {
-        return calculatorService.multiply(firstNum, secondNum);
+    public String multiply(@RequestParam("num1") int firstNum, @RequestParam("num2") int secondNum) {
+        int result = calculatorService.multiply(firstNum, secondNum);
+
+        return firstNum + " * " + secondNum + " = " + result;
     }
 
     @GetMapping(path = "/divide")
-    public String divide(@RequestParam(value = "num1", required = false) String firstNum, @RequestParam(value = "num2", required = false) String secondNum) {
-        return calculatorService.divide(firstNum, secondNum);
+    public String divide(@RequestParam("num1") int firstNum, @RequestParam("num2") int secondNum) {
+        if (secondNum == 0) {
+            return "Делить на 0 - нельзя!";
+        }
+
+        float result = calculatorService.divide(firstNum, secondNum);
+
+        return firstNum + " / " + secondNum + " = " + result;
     }
 }
